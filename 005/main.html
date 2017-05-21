@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>若干秒后不询问自动关闭窗口</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script type="text/javascript">
+			var willclose = true;
+
+			//单击网页
+			function clickBody() {
+				willclose = false;
+			}
+
+			setInterval(function() {
+				if (willclose) {
+					//window.close();
+					window.open('', '_self', '');
+					window.close();
+				} else {
+					willclose = true;
+				}
+			}, 1000);
+		</script>
+	</head>
+	<body style="text-align: center;" onclick="clickBody()" />
+		<p>
+			如果用户10秒钟不单击网页，本窗口将自动关闭
+		</p>
+	</body>
+</html>
